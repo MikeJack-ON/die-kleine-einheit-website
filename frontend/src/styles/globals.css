@@ -1,0 +1,65 @@
+:root {
+  --ink: #0f1f1f;
+  --petrol: #173a3c;
+  --petrol-2: #1c3d44;
+  --paper: #ecf2f2;
+  --paper-2: #ffffff;
+  --accent: #d57a23;
+  --accent-hi: #e98c2c;
+  --teal: #3e8794;
+  --sky-top: #16365f;
+  --sky-mid: #2f6aa6;
+  --sky-low: #74bdef;
+  --t-on-dark: #eef4f4;
+  --t-on-dark-mut: #9fb6b6;
+  --t-on-light: #16292a;
+  --t-on-light-mut: #5b7070;
+
+  --maxw: 1160px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--t-on-light);
+  background: var(--paper-2);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.has-js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.has-js .reveal.is-visible {
+  animation: rise 0.9s var(--ease) forwards;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .has-js .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
