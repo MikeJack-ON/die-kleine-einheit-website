@@ -1,0 +1,494 @@
+/* ============================================================
+   Landing — Sprint 1
+   Values transcribed 1:1 from Developer Specification v1.0.
+   ============================================================ */
+
+.landing {
+  text-align: left;
+  background: var(--paper-2);
+}
+
+.landing .wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  padding: 0.85em 1.5em;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 22px -10px rgba(213, 122, 35, 0.8);
+  transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.btn:hover {
+  background: var(--accent-hi);
+  transform: translateY(-2px);
+}
+.btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--t-on-dark);
+  border: 1px solid rgba(238, 244, 244, 0.45);
+  box-shadow: none;
+}
+.btn--ghost:hover {
+  background: rgba(238, 244, 244, 0.12);
+  border-color: rgba(238, 244, 244, 0.8);
+  transform: translateY(-2px);
+}
+.btn--sm {
+  padding: 0.6em 1.1em;
+  font-size: 0.82rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--t-on-dark);
+}
+.brand b {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+.brand span {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--t-on-dark-mut);
+}
+
+@media (max-width: 720px) {
+  .site-header .wrap {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .brand b {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+  }
+  .header-cta {
+    display: none;
+  }
+}
+
+/* ---------- Screen 1 — Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: var(--t-on-dark);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(116, 189, 239, 0.35), transparent 60%),
+    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 55%, var(--sky-low) 100%);
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+  padding-top: 120px;
+  padding-bottom: 64px;
+}
+@media (max-width: 720px) {
+  .hero .wrap {
+    padding-top: 104px;
+  }
+}
+.hero-eyebrow {
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+  color: var(--t-on-dark-mut);
+}
+.hero-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-size: clamp(3.4rem, 12vw, 8rem);
+  margin: 0.18em 0 0.34em;
+}
+.hero-title span {
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  color: var(--t-on-dark);
+  max-width: 30ch;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5em 1em;
+  border-radius: 999px;
+  background: rgba(238, 244, 244, 0.1);
+  border: 1px solid rgba(238, 244, 244, 0.18);
+  font-size: 0.85rem;
+  color: var(--t-on-dark);
+}
+.chip svg {
+  width: 15px;
+  height: 15px;
+  opacity: 0.9;
+  flex: none;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+.hero-note {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: var(--t-on-dark-mut);
+}
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  color: var(--t-on-dark-mut);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.scroll-cue .bar {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(var(--t-on-dark-mut), transparent);
+  animation: cue 2s var(--ease) infinite;
+  transform-origin: top;
+}
+@keyframes cue {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1) translateY(8px);
+    opacity: 0;
+  }
+}
+@media (max-width: 720px) {
+  .scroll-cue {
+    display: none;
+  }
+}
+
+/* ---------- Screen 2 — Die Idee ---------- */
+.idee {
+  background: var(--petrol);
+  color: var(--t-on-dark);
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(96px, 14vw, 160px) 0;
+  overflow: hidden;
+}
+.idee .wrap {
+  max-width: 880px;
+}
+.idee-statement {
+  font-family: "Archivo", sans-serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.idee-statement span {
+  display: block;
+}
+
+/* ---------- Screen 3 — Das Erlebnis ---------- */
+.erlebnis {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--t-on-dark);
+  background-image: var(--erlebnis-img);
+  background-size: cover;
+  background-position: center;
+}
+.erlebnis::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 22, 34, 0.1) 0%, rgba(8, 22, 34, 0.3) 45%, rgba(8, 22, 34, 0.7) 100%);
+}
+.erlebnis .wrap {
+  padding-top: 120px;
+  padding-bottom: clamp(56px, 9vh, 104px);
+}
+.erlebnis-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  text-shadow: 0 2px 34px rgba(8, 22, 34, 0.35);
+}
+.erlebnis-sub {
+  margin-top: 0.4em;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  text-shadow: 0 1px 22px rgba(8, 22, 34, 0.4);
+}
+@media (max-width: 720px) {
+  .erlebnis-sub {
+    max-width: 26ch;
+  }
+}
+
+/* ---------- Screen 4 — Was möglich wird ---------- */
+.moeglich {
+  position: relative;
+  background: var(--ink);
+  color: var(--t-on-dark);
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(80px, 14vh, 160px) 24px;
+  overflow: hidden;
+}
+.moeglich::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(80% 60% at 50% 50%, transparent 35%, rgba(0, 0, 0, 0.55) 100%);
+}
+.moeglich .wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+}
+.moeglich-text {
+  font-family: "Archivo", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 5vw, 3.4rem);
+  line-height: 1.12;
+}
+.moeglich-text span {
+  display: block;
+}
+
+/* ---------- Screen 5 — Haltung ---------- */
+.haltung {
+  background: var(--paper);
+  color: var(--t-on-light);
+  min-height: 84svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(88px, 13vh, 160px) 0;
+}
+.haltung .wrap {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+}
+.haltung-portrait {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 20px 54px -24px rgba(22, 41, 42, 0.5);
+}
+.haltung-text h2 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+.haltung-text p {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--t-on-light-mut);
+}
+.haltung-text .name {
+  margin-top: 1.2em;
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--t-on-light);
+}
+@media (max-width: 720px) {
+  .haltung .wrap {
+    grid-template-columns: 1fr;
+  }
+  .haltung-portrait {
+    max-width: 200px;
+  }
+}
+
+/* ---------- Screen 6 — Auflösung / Einladung ---------- */
+.einladung {
+  background: var(--petrol);
+  color: var(--t-on-dark);
+  padding: clamp(112px, 18vh, 220px) 0;
+  text-align: center;
+  overflow: hidden;
+}
+.einladung .wrap {
+  max-width: 640px;
+}
+.einladung-title {
+  font-family: "Archivo", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 5.5vw, 3.4rem);
+  line-height: 1.12;
+}
+.einladung-title span {
+  display: block;
+}
+.einladung-details {
+  margin: 2em 0 0.4em;
+  color: var(--t-on-dark-mut);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+.einladung-details .bring {
+  color: var(--t-on-dark);
+  margin-top: 0.6em;
+}
+.einladung-price {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--t-on-dark);
+  margin: 0.3em 0 1.1em;
+}
+
+/* ---------- Booking anchor placeholder (Sprint 2) ---------- */
+.buchung-placeholder {
+  background: #fff;
+  color: var(--t-on-light);
+  border-top: 1px solid #e3eaea;
+  padding: clamp(80px, 11vh, 140px) 0;
+}
+.buchung-placeholder .wrap {
+  max-width: 560px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: var(--t-on-dark);
+  padding: clamp(48px, 8vh, 80px) 0;
+}
+.site-footer .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.footer-brand {
+  text-decoration: none;
+  color: var(--t-on-dark);
+}
+.footer-brand b {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+.footer-contact a {
+  display: block;
+  color: var(--t-on-dark-mut);
+  text-decoration: none;
+  line-height: 1.7;
+}
+.footer-contact a:hover {
+  color: var(--t-on-dark);
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-links a {
+  color: var(--t-on-dark);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.footer-links a:hover {
+  color: var(--accent-hi);
+}
+.footer-copy {
+  color: var(--t-on-dark-mut);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
