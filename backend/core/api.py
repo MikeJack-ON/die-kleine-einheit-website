@@ -5,6 +5,7 @@ from modules.catalog.router import router as catalog_router
 from modules.legal.router import router as legal_router
 from modules.notifications.router import router as notifications_router
 from modules.payments.router import router as payments_router
+from modules.payments.router import webhook_router as payments_webhook_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -18,6 +19,7 @@ for _router in (
     catalog_router,
     bookings_router,
     payments_router,
+    payments_webhook_router,
     notifications_router,
     legal_router,
 ):

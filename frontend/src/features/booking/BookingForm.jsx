@@ -4,7 +4,7 @@ import { Button } from "@/components/shared/Button";
 import { LockIcon } from "@/components/shared/Icons";
 import { ROUTES } from "@/config/routes";
 import { WORKSHOP } from "@/config/workshop";
-import { createBooking } from "@/lib/api/booking";
+import { startCheckout } from "@/lib/api/checkout";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,7 +21,7 @@ export function BookingForm() {
     consentPhoto: false,
   });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | submitting | created | error
+  const [status, setStatus] = useState("idle"); // idle | submitting | error
 
   const update = (key, value) => setForm((f) => ({ ...f, [key]: value }));
 
@@ -41,7 +41,7 @@ export function BookingForm() {
 
     setStatus("submitting");
     try {
-      await createBooking({
+      const data = await startCheckout({
         workshop_slug: WORKSHOP.slug,
         name: form.name,
         email: form.email,
@@ -49,22 +49,18 @@ export function BookingForm() {
         consent_terms: form.consentTerms,
         consent_privacy: form.consentPrivacy,
         consent_photo_video: form.consentPhoto,
+        origin_url: window.location.origin,
       });
-      // Sprint 3 replaces this with: window.location.href = checkoutUrl
-      setStatus("created");
+
+      if (data && data.url) {
+        window.location.href = data.url;
+      } else {
+        setStatus("error");
+      }
     } catch (e) {
       setStatus("error");
     }
   };
-
-  if (status === "created") {
-    return (
-      <div className="booking-note" data-testid="checkout-pending-note">
-        Deine Anmeldedaten wurden erfasst (Status: Entwurf). Die Weiterleitung zur Stripe-Zahlung
-        wird in Sprint 3 aktiviert.
-      </div>
-    );
-  }
 
   return (
     <form

@@ -1,14 +1,18 @@
 from abc import ABC, abstractmethod
 
 # Stripe stays fully behind this seam. The booking flow and notifications never
-# import Stripe directly — they depend on this interface. Implemented in Sprint 3.
+# import Stripe directly — they depend on this interface.
 
 
 class PaymentProvider(ABC):
     @abstractmethod
-    async def create_checkout_session(self, *, booking, success_url: str, cancel_url: str) -> str:
-        """Create a hosted checkout session for a booking and return its redirect URL."""
+    async def create_checkout_session(self, *, amount: float, currency: str, success_url: str, cancel_url: str, metadata: dict):
+        """Create a hosted checkout session and return an object with `url` and `session_id`."""
 
     @abstractmethod
-    def parse_webhook_event(self, payload: bytes, signature: str) -> dict:
+    async def get_status(self, session_id: str):
+        """Return the current status of a checkout session."""
+
+    @abstractmethod
+    async def handle_webhook(self, body: bytes, signature: str):
         """Verify the provider signature and return a normalized event."""
