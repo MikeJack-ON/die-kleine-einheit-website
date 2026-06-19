@@ -1,4 +1,4 @@
-export function Button({ href, variant = "primary", size, className = "", children, ...rest }) {
+export function Button({ href, variant = "primary", size, type = "button", className = "", children, ...rest }) {
   const classes = [
     "btn",
     variant === "ghost" ? "btn--ghost" : "",
@@ -17,7 +17,7 @@ export function Button({ href, variant = "primary", size, className = "", childr
   }
 
   return (
-    <button type="button" className={classes} {...rest}>
+    <button type={type} className={classes} {...rest}>
       {children}
     </button>
   );

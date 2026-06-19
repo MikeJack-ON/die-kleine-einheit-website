@@ -28,6 +28,15 @@ def create_app() -> FastAPI:
     register_exception_handlers(app)
     app.include_router(api_router)
 
+    @app.on_event("startup")
+    async def _startup():
+        from modules.catalog import service as catalog_service
+        from modules.bookings import service as bookings_service
+
+        await catalog_service.ensure_indexes()
+        await catalog_service.seed_default_workshop()
+        await bookings_service.ensure_indexes()
+
     @app.on_event("shutdown")
     async def _shutdown():
         db_client.close()

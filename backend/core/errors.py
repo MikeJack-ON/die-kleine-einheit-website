@@ -25,9 +25,16 @@ def register_exception_handlers(app: FastAPI) -> None:
 
     @app.exception_handler(RequestValidationError)
     async def _validation_handler(_: Request, exc: RequestValidationError):
+        details = [
+            {
+                "field": ".".join(str(p) for p in err.get("loc", []) if p != "body"),
+                "message": err.get("msg", "Ungültige Eingabe."),
+            }
+            for err in exc.errors()
+        ]
         return JSONResponse(
             status_code=422,
-            content={"error": {"code": "validation_error", "message": "Ungültige Eingabe.", "details": exc.errors()}},
+            content={"error": {"code": "validation_error", "message": "Ungültige Eingabe.", "details": details}},
         )
 
     @app.exception_handler(Exception)

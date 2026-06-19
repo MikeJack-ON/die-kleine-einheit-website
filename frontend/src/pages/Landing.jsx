@@ -7,6 +7,7 @@ import { Erlebnis } from "@/features/landing/sections/Erlebnis";
 import { Moeglich } from "@/features/landing/sections/Moeglich";
 import { Haltung } from "@/features/landing/sections/Haltung";
 import { Einladung } from "@/features/landing/sections/Einladung";
+import { BookingSection } from "@/features/booking/BookingSection";
 
 export default function Landing() {
   return (
@@ -19,13 +20,7 @@ export default function Landing() {
         <Moeglich />
         <Haltung />
         <Einladung />
-
-        {/* Sprint 2: Booking form (Screen 7) replaces this anchor placeholder. */}
-        <section className="buchung-placeholder" id="buchung" aria-label="Buchung">
-          <div className="wrap" data-testid="buchung-placeholder">
-            Buchung — Sprint 2
-          </div>
-        </section>
+        <BookingSection />
       </main>
       <Footer />
     </div>
