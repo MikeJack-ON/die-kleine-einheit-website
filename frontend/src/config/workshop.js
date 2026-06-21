@@ -13,6 +13,6 @@ export const WORKSHOP = {
   },
   contact: {
     email: "info@die-kleine-einheit.de",
-    phone: "0175 2589296",
+    phone: "+49 179 2589296",
   },
 };

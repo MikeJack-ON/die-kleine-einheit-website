@@ -5,6 +5,7 @@ from typing import Optional
 from core.config import settings
 from core.database import get_db
 from core.errors import AppError
+from core.events import EventType, event_bus
 from core.models import utcnow_iso
 from modules.bookings import service as bookings_service
 from modules.bookings.models import BookingStatus
@@ -88,6 +89,10 @@ async def create_checkout(data: CheckoutRequest, base_url: str) -> dict:
         booking.id, BookingStatus.pending, extra={"stripe_session_id": session.session_id}
     )
 
+    await event_bus.publish(
+        EventType.CheckoutStarted, {"booking_id": booking.id, "session_id": session.session_id}
+    )
+
     return {"url": session.url, "session_id": session.session_id, "booking_id": booking.id}
 
 
@@ -109,7 +114,10 @@ async def _apply_paid(session_id: str) -> Optional[str]:
             await bookings_service.transition(booking_id, BookingStatus.paid, extra={"paid_at": now})
         except AppError:
             pass  # booking already advanced
-    # Sprint 4: a booking "paid" event is consumed here by the notifications domain.
+    # Notifications domain consumes this event (no Stripe dependency there).
+    await event_bus.publish(
+        EventType.PaymentConfirmed, {"booking_id": booking_id, "session_id": session_id}
+    )
     return booking_id
 
 
@@ -138,6 +146,14 @@ async def get_status(session_id: str, base_url: str) -> dict:
 async def handle_webhook(body: bytes, signature: str, base_url: str) -> dict:
     provider = _provider(base_url)
     event = await provider.handle_webhook(body, signature)
+    await event_bus.publish(
+        EventType.WebhookReceived,
+        {
+            "event_type": getattr(event, "event_type", None),
+            "session_id": getattr(event, "session_id", None),
+            "payment_status": getattr(event, "payment_status", None),
+        },
+    )
     if getattr(event, "payment_status", None) == "paid" and getattr(event, "session_id", None):
         await _apply_paid(event.session_id)
     return {"received": True}

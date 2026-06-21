@@ -30,14 +30,19 @@ def create_app() -> FastAPI:
 
     @app.on_event("startup")
     async def _startup():
+        from core import events
         from modules.catalog import service as catalog_service
         from modules.bookings import service as bookings_service
         from modules.payments import service as payments_service
+        from modules.notifications import service as notifications_service
 
         await catalog_service.ensure_indexes()
         await catalog_service.seed_default_workshop()
         await bookings_service.ensure_indexes()
         await payments_service.ensure_indexes()
+        await events.ensure_indexes()
+        await notifications_service.ensure_indexes()
+        notifications_service.register_handlers()
 
     @app.on_event("shutdown")
     async def _shutdown():

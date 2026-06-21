@@ -5,6 +5,7 @@ from bson.errors import InvalidId
 
 from core.database import get_db
 from core.errors import AppError
+from core.events import EventType, event_bus
 from core.models import utcnow_iso
 from modules.catalog import service as catalog_service
 
@@ -64,6 +65,10 @@ async def create_booking(data: BookingCreate) -> Booking:
     db = get_db()
     result = await db[COLLECTION].insert_one(booking.to_mongo())
     booking.id = str(result.inserted_id)
+    await event_bus.publish(
+        EventType.BookingCreated,
+        {"booking_id": booking.id, "workshop_slug": booking.workshop_slug, "amount": booking.amount},
+    )
     return booking
 
 
