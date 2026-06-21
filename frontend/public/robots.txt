@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /danke
 
-Sitemap: https://www.die-kleine-einheit.de/sitemap.xml
+Sitemap: https://die-kleine-einheit.de/sitemap.xml
