@@ -15,6 +15,17 @@ export default function Danke() {
 
   // Silently finalize the backend flow (marks paid -> confirmed, triggers notifications).
   useEffect(() => {
+    // Thank-You page must not be indexed (spec: noindex, nofollow).
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!sessionId) return;
     let cancelled = false;
     let attempts = 0;

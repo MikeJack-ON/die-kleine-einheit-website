@@ -103,3 +103,46 @@
 .danke-contact a:hover {
   color: var(--accent);
 }
+
+/* ---------- Legal pages ---------- */
+.legal h2 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  margin: 1.8em 0 0.5em;
+}
+.legal h3 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 1.3em 0 0.4em;
+}
+.legal p,
+.legal li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--t-on-light);
+}
+.legal p {
+  margin-bottom: 0.9em;
+}
+.legal ul {
+  padding-left: 20px;
+  margin-bottom: 1em;
+}
+.legal li {
+  margin-bottom: 0.5em;
+}
+.legal a {
+  color: var(--teal);
+  word-break: break-word;
+}
+.legal .stand {
+  color: var(--t-on-light-mut);
+  font-size: 0.85rem;
+  margin: -0.4em 0 2em;
+}
+.legal .muted {
+  color: var(--t-on-light-mut);
+  margin-top: 2.4em;
+}
