@@ -1,0 +1,105 @@
+.subpage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--paper-2);
+}
+
+.subpage-topbar {
+  background: var(--ink);
+  color: var(--t-on-dark);
+}
+.subpage-topbar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px 28px;
+}
+.subpage-topbar .brand {
+  text-decoration: none;
+  color: var(--t-on-dark);
+}
+.subpage-topbar .brand b {
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+}
+.subpage-back {
+  color: var(--t-on-dark-mut);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s var(--ease);
+}
+.subpage-back:hover {
+  color: var(--t-on-dark);
+}
+
+.subpage-main {
+  flex: 1;
+  padding: clamp(56px, 9vh, 110px) 0;
+}
+.subpage-main .wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.subpage-main h1 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 0.6em;
+}
+.subpage-main h2 {
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 1.8em 0 0.6em;
+}
+.subpage-main p {
+  line-height: 1.6;
+  color: var(--t-on-light);
+}
+.subpage-main .lead {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--t-on-light-mut);
+  line-height: 1.5;
+  margin-bottom: 1.6em;
+}
+
+.note-box {
+  background: var(--paper);
+  border-left: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 0 0 1.6em;
+  line-height: 1.7;
+}
+
+.danke-hinweis {
+  color: var(--t-on-light-mut);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.prep-list {
+  margin: 0 0 1.8em;
+  padding-left: 20px;
+  line-height: 1.9;
+  color: var(--t-on-light);
+}
+
+.danke-contact {
+  margin: 1.4em 0 2em;
+  color: var(--t-on-light-mut);
+}
+.danke-contact a {
+  color: var(--t-on-light);
+  text-decoration: none;
+}
+.danke-contact a:hover {
+  color: var(--accent);
+}
