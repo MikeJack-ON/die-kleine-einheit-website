@@ -1,3 +1,5 @@
+import html as htmllib
+
 CONTACT_EMAIL = "info@die-kleine-einheit.de"
 CONTACT_PHONE = "+49 179 2589296"
 
@@ -5,6 +7,7 @@ EMAIL_SUBJECT = "Deine Anmeldung ist bestätigt – Körperintelligenz, 4. Juli"
 
 
 def render_confirmation_email(name: str) -> tuple[str, str, str]:
+    safe_name = htmllib.escape(name)
     text = f"""Hallo {name},
 
 wir freuen uns sehr über deine Anmeldung zum Live-Workshop „Körperintelligenz"! Deine Buchung ist nun abgeschlossen.
@@ -51,7 +54,7 @@ Dieses ist eine automatische Benachrichtigung. Bitte prüfe ggf. deinen Spam-Ord
         <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;max-width:560px;">
           <tr><td style="background:#173a3c;padding:24px 28px;color:#eef4f4;font-weight:bold;letter-spacing:.18em;font-size:14px;">DIE KLEINE EINHEIT</td></tr>
           <tr><td style="padding:28px;">
-            <p style="font-size:16px;line-height:1.5;margin:0 0 16px;">Hallo {name},</p>
+            <p style="font-size:16px;line-height:1.5;margin:0 0 16px;">Hallo {safe_name},</p>
             <p style="font-size:16px;line-height:1.5;margin:0 0 16px;">wir freuen uns sehr über deine Anmeldung zum Live-Workshop „Körperintelligenz"! Deine Buchung ist nun abgeschlossen.</p>
             <p style="font-size:15px;font-weight:bold;margin:0 0 8px;">Deine Anmeldedaten:</p>
             <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:15px;line-height:1.6;margin:0 0 16px;">

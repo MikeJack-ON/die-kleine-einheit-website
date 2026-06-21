@@ -132,6 +132,11 @@ async def get_status(session_id: str, base_url: str) -> dict:
 
     if result.payment_status == "paid":
         await _apply_paid(session_id)
+    elif result.status == "expired":
+        await event_bus.publish(
+            EventType.CheckoutCancelled,
+            {"session_id": session_id, "booking_id": tx.get("booking_id")},
+        )
 
     return {
         "session_id": session_id,
