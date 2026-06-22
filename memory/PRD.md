@@ -37,6 +37,11 @@ Confirmation Email → WhatsApp confirmation → Legal pages → SEO foundation 
 - WhatsApp Business API (Twilio/Meta), admin booking dashboard, durable notification queue,
   multi-workshop UI, analytics dashboard, sender events@die-kleine-einheit.de, OG share image.
 
+## Final image swap (2026-06-22)
+- Replaced 2 placeholder images with user's uploaded originals (unmodified pixels), stored in
+  /app/frontend/public/images/: michael-portrait.png (Haltung section) and barfuss-gehen.png
+  (Erlebnis "Einfach gehen." section). Swap done via src/config/assets.js only. No editing/AI.
+
 ## Stripe Checkout presentation upgrade (2026-06-22)
 - Bypassed emergentintegrations hardcoded "Payment" name: create_checkout_session now uses raw
   stripe SDK (dynamic product_data name + description), preserving emergent proxy + webhook_url merge.
