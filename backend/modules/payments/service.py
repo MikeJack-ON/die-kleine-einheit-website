@@ -9,6 +9,7 @@ from core.events import EventType, event_bus
 from core.models import utcnow_iso
 from modules.bookings import service as bookings_service
 from modules.bookings.models import BookingStatus
+from modules.catalog import service as catalog_service
 
 from .models import CheckoutRequest, PaymentTransaction
 from .stripe_provider import StripePaymentProvider
@@ -52,18 +53,33 @@ async def create_checkout(data: CheckoutRequest, base_url: str) -> dict:
     amount = float(booking.amount)
     currency = booking.currency
 
+    workshop = await catalog_service.get_workshop(booking.workshop_slug)
+    environment = "production" if "sk_live" in _api_key() else "test"
+
     origin = data.origin_url.rstrip("/")
     success_url = f"{origin}/danke?session_id={{CHECKOUT_SESSION_ID}}"
     cancel_url = f"{origin}/#buchung"
 
     metadata = {
-        "booking_id": booking.id,
-        "workshop": WORKSHOP_META_ID,
-        "name": booking.name,
-        "email": booking.email,
+        "bookingId": booking.id,
+        "workshopTitle": workshop.title,
+        "workshopDate": workshop.session.date,
+        "customerName": booking.name,
+        "customerEmail": booking.email,
+        "amount": str(booking.amount),
+        "environment": environment,
+        # retained for support/back-compat
         "phone": booking.phone or "",
         "photo_video": "true" if booking.consent.photo_video else "false",
     }
+
+    product_name = f"Workshop {workshop.title}"
+    product_description = (
+        f"{workshop.session.date}, {workshop.session.time} · "
+        f"{workshop.session.location} · "
+        f"{int(round(amount))} {currency.upper()} · "
+        f"Anbieter: {workshop.brand}"
+    )
 
     provider = _provider(base_url)
     session = await provider.create_checkout_session(
@@ -72,6 +88,8 @@ async def create_checkout(data: CheckoutRequest, base_url: str) -> dict:
         success_url=success_url,
         cancel_url=cancel_url,
         metadata=metadata,
+        product_name=product_name,
+        product_description=product_description,
     )
 
     # 3. Record the transaction BEFORE the user reaches Stripe.
