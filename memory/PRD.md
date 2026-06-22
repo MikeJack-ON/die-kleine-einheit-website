@@ -37,6 +37,15 @@ Confirmation Email → WhatsApp confirmation → Legal pages → SEO foundation 
 - WhatsApp Business API (Twilio/Meta), admin booking dashboard, durable notification queue,
   multi-workshop UI, analytics dashboard, sender events@die-kleine-einheit.de, OG share image.
 
+## Stripe Checkout presentation upgrade (2026-06-22)
+- Bypassed emergentintegrations hardcoded "Payment" name: create_checkout_session now uses raw
+  stripe SDK (dynamic product_data name + description), preserving emergent proxy + webhook_url merge.
+  Status polling & webhook handling still go through emergentintegrations (unchanged).
+- Product name = "Workshop {workshop.title}" -> "Workshop Körperintelligenz" (fully dynamic).
+- Product description = date, time · location · price · "Anbieter: Die kleine Einheit".
+- 7 metadata fields confirmed: bookingId, workshopTitle, workshopDate, customerName, customerEmail,
+  amount, environment. Verified live via Stripe test session + status endpoint regression. Deploy-ready.
+
 ## Next action items
 1. Fill legal placeholders. 2. Deploy. 3. Set production secrets + restart. 4. Configure Stripe live
    webhook. 5. Resend DNS. 6. Live smoke test (book→pay→confirm). 
