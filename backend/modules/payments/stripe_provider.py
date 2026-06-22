@@ -48,8 +48,15 @@ class StripePaymentProvider(PaymentProvider):
         if product_description:
             product_data["description"] = product_description
 
+        # PayPal is enabled on the live Stripe account. The shared Emergent test
+        # proxy (sk_test_emergent) does not support it, so it is added only for
+        # real keys to avoid breaking the preview checkout.
+        payment_method_types = ["card"]
+        if "sk_test_emergent" not in self._api_key:
+            payment_method_types.append("paypal")
+
         session = stripe.checkout.Session.create(
-            payment_method_types=["card"],
+            payment_method_types=payment_method_types,
             line_items=[
                 {
                     "price_data": {
