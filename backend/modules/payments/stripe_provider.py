@@ -1,3 +1,5 @@
+import logging
+
 import stripe
 from emergentintegrations.payments.stripe.checkout import (
     CheckoutSessionResponse,
@@ -5,6 +7,8 @@ from emergentintegrations.payments.stripe.checkout import (
 )
 
 from .provider import PaymentProvider
+
+logger = logging.getLogger("app")
 
 EMERGENT_PROXY_BASE = "https://integrations.emergentagent.com/stripe"
 
@@ -51,9 +55,17 @@ class StripePaymentProvider(PaymentProvider):
         # PayPal is enabled on the live Stripe account. The shared Emergent test
         # proxy (sk_test_emergent) does not support it, so it is added only for
         # real keys to avoid breaking the preview checkout.
+        is_emergent_proxy = "sk_test_emergent" in self._api_key
+        key_prefix = self._api_key[:8]
         payment_method_types = ["card"]
-        if "sk_test_emergent" not in self._api_key:
+        if not is_emergent_proxy:
             payment_method_types.append("paypal")
+
+        logger.info(
+            "stripe.checkout.create requested key_prefix=%s emergent_proxy=%s "
+            "requested_pmt=%s mode=payment currency=%s",
+            key_prefix, is_emergent_proxy, payment_method_types, currency,
+        )
 
         session = stripe.checkout.Session.create(
             payment_method_types=payment_method_types,
@@ -71,6 +83,15 @@ class StripePaymentProvider(PaymentProvider):
             success_url=success_url,
             cancel_url=cancel_url,
             metadata=merged_metadata,
+        )
+        logger.info(
+            "stripe.checkout.create accepted session=%s mode=%s currency=%s "
+            "accepted_pmt=%s automatic_pm=%s",
+            session.id,
+            getattr(session, "mode", None),
+            getattr(session, "currency", None),
+            getattr(session, "payment_method_types", None),
+            getattr(session, "automatic_payment_methods", None),
         )
         return CheckoutSessionResponse(url=session.url, session_id=session.id)
 
