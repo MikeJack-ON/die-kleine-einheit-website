@@ -37,7 +37,11 @@ def _webhook_url(base_url: str) -> str:
 
 
 def _provider(base_url: str) -> StripePaymentProvider:
-    return StripePaymentProvider(api_key=_api_key(), webhook_url=_webhook_url(base_url))
+    return StripePaymentProvider(
+        api_key=_api_key(),
+        webhook_url=_webhook_url(base_url),
+        webhook_secret=settings.optional("STRIPE_WEBHOOK_SECRET") or None,
+    )
 
 
 async def create_checkout(data: CheckoutRequest, base_url: str) -> dict:

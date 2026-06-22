@@ -9,8 +9,12 @@ from .provider import PaymentProvider
 class StripePaymentProvider(PaymentProvider):
     """First concrete PaymentProvider. Encapsulates all Stripe specifics."""
 
-    def __init__(self, api_key: str, webhook_url: str):
-        self._client = StripeCheckout(api_key=api_key, webhook_url=webhook_url)
+    def __init__(self, api_key: str, webhook_url: str, webhook_secret: str | None = None):
+        self._client = StripeCheckout(
+            api_key=api_key,
+            webhook_url=webhook_url,
+            webhook_secret=webhook_secret or None,
+        )
 
     async def create_checkout_session(self, *, amount: float, currency: str, success_url: str, cancel_url: str, metadata: dict):
         request = CheckoutSessionRequest(
