@@ -43,6 +43,15 @@ Ziel ist eine moderne, performante und skalierbare Plattform, die Besucher zu Ku
 app/
 components/
 landingpages/
+---
+
+## Projektstatus
+
+**Version:** 1.0.0
+
+**Status:** Active Development
+
+**Maintainer:** Michael Kletschke
 membership/
 booking/
 stripe/
