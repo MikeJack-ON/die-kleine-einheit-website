@@ -116,3 +116,13 @@ Dieses Repository ist Teil des Ökosystems von **die kleine Einheit**.
 **Status:** Active Development
 
 **Maintainer:** Michael Kletschke
+
+---
+
+## Architektur
+
+Dieses Repository enthält ausschließlich die technische Umsetzung der Website.
+
+Geschäftslogik, Projektmanagement, KI-Agenten, Marketing-Workflows und Dokumentationen befinden sich im Repository **workshop-operating-system**.
+
+Dadurch bleiben Website-Code und Unternehmensprozesse klar voneinander getrennt.
