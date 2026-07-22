@@ -126,3 +126,4 @@ Dieses Repository enthält ausschließlich die technische Umsetzung der Website.
 Geschäftslogik, Projektmanagement, KI-Agenten, Marketing-Workflows und Dokumentationen befinden sich im Repository **workshop-operating-system**.
 
 Dadurch bleiben Website-Code und Unternehmensprozesse klar voneinander getrennt.
+Die technische Umsetzung orientiert sich an den Vorgaben und Standards des Repositorys **workshop-operating-system**, welches als zentrale Wissens- und Prozessbasis dient.
