@@ -89,3 +89,30 @@ docs/
 Die Website entwickelt sich zu einer zentralen Plattform für alle Angebote von „die kleine Einheit“.
 
 Dazu gehören Workshops, Coaching, Membership, Online-Kurse, digitale Produkte, Terminbuchungen und Wissensinhalte rund um Körperintelligenz.
+## Langfristige Vision
+
+Die Website entwickelt sich zu einer zentralen Plattform für alle Angebote von „die kleine Einheit“.
+
+Dazu gehören Workshops, Coaching, Membership, Online-Kurse, digitale Produkte, Terminbuchungen und Wissensinhalte rund um Körperintelligenz.
+
+---
+
+## Zugehörige Projekte
+
+Dieses Repository ist Teil des Ökosystems von **die kleine Einheit**.
+
+- workshop-operating-system
+- die-kleine-einheit-website
+- physiokl
+- ai-agents
+- documentation
+
+---
+
+## Projektstatus
+
+**Version:** 1.0.0
+
+**Status:** Active Development
+
+**Maintainer:** Michael Kletschke
