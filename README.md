@@ -1,126 +1,82 @@
-# Workshop Operating System
+# Die kleine Einheit Website
 
 ## Projektübersicht
 
-Das **Workshop Operating System** ist das zentrale KI-gestützte Betriebssystem für die Planung, Entwicklung, Vermarktung und Durchführung der Workshopreihe **„Körperintelligenz“** von **die kleine Einheit**.
+Die-Kleine-Einheit Website ist die zentrale Webplattform der Marke „die kleine Einheit“ und bildet die technische Grundlage für Coaching, Workshops, Membership, Terminbuchung und digitale Produkte.
 
-Dieses Repository bündelt Unternehmenswissen, standardisierte Prozesse, KI-Agenten, Workflows, SOPs, Marketing, Content-Produktion, Dokumentation und Projektmanagement an einem zentralen Ort.
+Das Repository enthält die komplette Website inklusive Landingpages, Buchungs- und Zahlungssystem, Mitgliederbereich, Blog, Content-Struktur sowie die technische Infrastruktur für die digitale Kundenreise.
 
-Ziel ist ein skalierbares System, das wiederkehrende Aufgaben standardisiert, die Zusammenarbeit zwischen Claude Code, ChatGPT, Emergent und weiteren KI-Systemen unterstützt und eine reproduzierbare Qualität für alle zukünftigen Workshops und digitalen Produkte sicherstellt.
-
----
-
-# Projektziele
-
-- Entwicklung einer skalierbaren Workshopreihe
-- Standardisierung aller wiederkehrenden Prozesse
-- Aufbau eines zentralen Wissenssystems
-- Unterstützung durch spezialisierte KI-Agenten
-- Automatisierung von Marketing- und Content-Workflows
-- Einheitliche Qualitätsstandards
-- Dokumentation aller Entscheidungen und Prozesse
-- Wiederverwendbare Templates für zukünftige Workshops
+Ziel ist eine moderne, performante und skalierbare Plattform, die Besucher zu Kunden begleitet und die Markenphilosophie „Körperintelligenz“ digital erlebbar macht.
 
 ---
 
-# Kernbereiche
+## Projektziele
 
-- Workshop-Planung
-- Projektmanagement
-- Landingpage-Konzeption
-- Marketing
-- Social Media
-- Video-Workflows
-- Content-Produktion
-- Teilnehmermanagement
-- SOPs
-- Qualitätskontrolle
-- Dokumentation
-- KI-Agenten
-- Automatisierte Workflows
+- Aufbau einer skalierbaren Unternehmenswebsite
+- Verwaltung aller Workshop-Landingpages
+- Integration von Stripe für Buchungen
+- Aufbau einer Membership-Plattform
+- Veröffentlichung digitaler Produkte
+- SEO-Optimierung
+- Mobile-First-Entwicklung
+- Hohe Performance und Wartbarkeit
 
 ---
 
-# Repository-Struktur
+## Kernbereiche
+
+- Unternehmenswebsite
+- Workshop-Landingpages
+- Buchungssystem
+- Stripe
+- Membership
+- Coaching
+- Blog
+- Downloadbereich
+- Kundenportal
+
+---
+
+## Projektstruktur
 
 ```text
-agents/
-skills/
-loops/
-marketing/
+app/
+components/
 landingpages/
-videos/
-documentation/
-prompts/
-templates/
-sops/
-resources/
+membership/
+booking/
+stripe/
+public/
+docs/
 ```
 
----
+## Technologien
 
-# Technologien
-
-- Claude Code
-- ChatGPT
-- Emergent
-- GitHub
 - Next.js
+- React
+- TypeScript
+- Tailwind CSS
 - Stripe
-- FFmpeg
-- DaVinci Resolve
-- CapCut
-- Google Workspace
+- GitHub
+- Claude Code
+- Emergent
 
 ---
 
-# Entwicklungsprinzipien
+## Entwicklungsprinzipien
 
-- Dokumentation vor Umsetzung
-- Wiederverwendbare Prozesse
-- Klare Verantwortlichkeiten
-- Versionskontrolle über GitHub
-- Hohe Automatisierung
-- Skalierbare Architektur
-- Kontinuierliche Verbesserung
-- Qualität vor Geschwindigkeit
-
----
-
-# Langfristige Vision
-
-Das Workshop Operating System entwickelt sich zum zentralen Betriebssystem der Marke **„die kleine Einheit“**.
-
-Es dient als Wissensdatenbank, Prozessplattform und Steuerzentrale für sämtliche Workshops, digitale Produkte, Online-Kurse, Marketingkampagnen und zukünftige KI-Agenten.
-
-Jeder neue Workshop baut auf denselben Standards, Workflows und Qualitätsrichtlinien auf und kann dadurch effizient geplant, umgesetzt und kontinuierlich weiterentwickelt werden.
+- Mobile First
+- Komponentenbasiert
+- Wiederverwendbare Module
+- Schnelle Ladezeiten
+- Barrierefreiheit
+- SEO
+- Klare Code-Struktur
 
 ---
 
-# Zugehörige Repositories
+## Langfristige Vision
 
-- die-kleine-einheit-website
-- workshop-platform
-- physiokl
-- ai-agents
-- documentation
+Die Website entwickelt sich zu einer zentralen Plattform für alle Angebote von „die kleine Einheit“.
 
----
-
-# Status
-
-**Version:** 1.0.0
-
-**Projektstatus:** Aufbau der Systemarchitektur
-
-**Maintainer:** Michael Kletschke
-
----
-
-## Projektstatus
-
-**Version:** 1.0.0
-
-**Status:** Active Development
-
-**Maintainer:** Michael Kletschke
+Dazu gehören Workshops, Coaching, Membership, Online-Kurse, digitale Produkte, Terminbuchungen und Wissensinhalte rund um Körperintelligenz.
